@@ -1,1 +1,26 @@
 /* miniprogram/pages/user/user.wxss */
+.user-container{
+  display: flex;
+  flex-direction: column;
+}
+.user-info{
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+.user-info image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.user-info text{
+  margin-left: 40rpx;
+}
+.user-authorize{
+  margin-top: 200rpx;
+}
+.user-authorize button{
+  background-color: #112D4E;
+  color: #fff;
+}

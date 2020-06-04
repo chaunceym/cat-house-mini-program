@@ -1,2 +1,14 @@
 <!--miniprogram/pages/user/user.wxml-->
-<text>miniprogram/pages/user/user.wxml</text>
+<view class="user-container">
+	<view class="user-info">
+		<image wx:if="{{isLogin}}" src="{{userInfo.avatarUrl}}"></image>
+    <image wx:else src="../../images/user_images/user_no_login.png"></image>
+		<text wx:if="{{isLogin}}">Hello, {{userInfo.nickName}}</text>
+    <text style="color:#BFBFBF" wx:else>暂没有用户信息，请授权登录</text>
+	</view>
+	<view class="user-authorize">
+		<button disabled="{{disabled}}" wx:if="{{!isLogin}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+	</view>
+
+
+</view>
