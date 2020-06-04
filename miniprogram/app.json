@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/near/near",
+    "pages/message/message",
+    "pages/user/user"
+  ],
+  "window": {
+    "backgroundColor": "#f9f7f7",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#112d4e",
+    "navigationBarTitleText": "we are family",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "selectedColor": "#112d4e",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab_images/index.png",
+        "selectedIconPath": "images/tab_images/index_on.png"
+      },
+      {
+        "pagePath": "pages/near/near",
+        "text": "附近",
+        "iconPath": "images/tab_images/near.png",
+        "selectedIconPath": "images/tab_images/near_on.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "images/tab_images/message.png",
+        "selectedIconPath": "images/tab_images/message_on.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/tab_images/user.png",
+        "selectedIconPath": "images/tab_images/user_on.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
