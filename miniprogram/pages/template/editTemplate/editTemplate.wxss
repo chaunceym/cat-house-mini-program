@@ -1,0 +1,32 @@
+/* miniprogram/pages/template/editTemplate/editTemplate.wxss */
+.edit-template{
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+}
+.edit-template .edit-text-part input{
+  padding: 10rpx;
+  border-radius: 10rpx;
+  border: 1px solid #dbe2ef;
+  margin-bottom: 20rpx;
+}
+.edit-template button{
+  background-color: #112D4E;
+  color: #fff;
+}
+.edit-avatar-part{
+  border:1px solid #ddd;
+  text-align: center;
+  margin: 200rpx;
+}
+.edit-avatar-part image{
+  width: 300rpx;
+  height: 300rpx;
+}
+.edit-location-part{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 30rpx;
+}

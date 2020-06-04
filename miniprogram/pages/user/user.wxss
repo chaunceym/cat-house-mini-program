@@ -6,21 +6,40 @@
 .user-info{
   display: flex;
   align-items: center;
-  padding: 20rpx;
+  padding: 20rpx 20rpx 80rpx;
   border-bottom: 1px solid #ddd;
   width: 100%;
+  background-color: #112D4E;
+  color: #fff;
 }
 .user-info image{
-  width: 150rpx;
-  height: 150rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
 }
 .user-info text{
   margin-left: 40rpx;
 }
-.user-authorize{
-  margin-top: 200rpx;
-}
-.user-authorize button{
+.user-container .user-info button{
   background-color: #112D4E;
   color: #fff;
+  margin: 0;
+  padding: 10rpx 10rpx;
+  margin-left: 40rpx;
+  width: 160rpx;
+  border-bottom: 1px solid #fff;
+}
+.user-list{
+  width: 90%;
+  background-color: #fff;
+  margin: auto;
+  z-index: 2;
+  margin-top: -30rpx;
+  border-radius: 10px;
+  padding: 10rpx;
+}
+.user-list .user-list-item{
+  display: flex;
+  justify-content: space-between;
+  padding: 15rpx 10rpx;
 }

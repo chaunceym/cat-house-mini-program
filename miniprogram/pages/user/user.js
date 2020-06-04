@@ -22,7 +22,8 @@ Page({
           phone: '',
           favor: 0,
           wxNumber: '',
-          createAt: new Date()
+          createAt: new Date(),
+          isLocation: true
         }
       }).then(result=>{
         db.collection('users').doc(result._id).get().then(result=>{
@@ -93,7 +94,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
   },
 
   /**

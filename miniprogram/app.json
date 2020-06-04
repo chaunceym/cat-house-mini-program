@@ -3,7 +3,11 @@
     "pages/index/index",
     "pages/near/near",
     "pages/message/message",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/editUserInfo/editUserInfo",
+    "pages/friendsList/friendsList",
+    "pages/userDetail/userDetail",
+    "pages/template/editTemplate/editTemplate"
   ],
   "window": {
     "backgroundColor": "#f9f7f7",

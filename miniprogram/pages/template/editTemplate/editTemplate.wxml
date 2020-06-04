@@ -1,0 +1,15 @@
+<!--miniprogram/pages/template/editTemplate/editTemplate.wxml-->
+<view class="edit-template">
+	<view wx:if="{{toTextTemplate}}" class="edit-text-part">
+		<input type="text" placeholder="请输入要修改的内容" bindinput="getInputValue" value="{{inputValue}}"></input>
+
+	</view>
+	<view wx:if="{{toAvatarTemplate}}" class="edit-avatar-part">
+		<image catchtap="toggleAvatar" src="{{inputValue}}"></image>
+	</view>
+	<view class="edit-location-part" wx:if="{{toLocationTemplate}}">
+    <text>是否开启共享位置</text>
+     <switch checked="{{inputValue}}" bindchange="switchChange"/>
+	</view>
+	<button wx:if="{{!toLocationTemplate}}" catchtap="submitInputValue">修改</button>
+</view>

@@ -1,0 +1,26 @@
+/* miniprogram/pages/editUserInfo/editUserInfo.wxss */
+.editUserInfo-container{
+  display: flex;
+  flex-direction: column;
+}
+.editUserInfo-title{
+  text-align: center;
+  background-color: #112D4E;
+  color: #fff;
+  padding: 30rpx 0 90rpx;
+}
+.editUserInfo-list{
+  width: 90%;
+  background-color: #fff;
+  box-shadow: 0px 0px 0px .5px #ddd;
+  margin: auto;
+  border-radius: 10px;
+  z-index: 1;
+  margin-top: -30rpx;
+  padding: 10rpx;
+}
+.editUserInfo-list-item{
+  display: flex;
+  justify-content: space-between;
+  padding: 15rpx 10rpx;
+}
