@@ -12,35 +12,15 @@
 		<text>推荐</text>
 	</view>
 	<view class="index-list">
-		<view class="index-list-item">
-			<image mode="aspectFill" src="../../images/swiper_images/coldplay1.jpg"></image>
+		<view class="index-list-item" wx:for="{{userList}}" wx:key="{{index}}">
+			<image mode="aspectFill" src="{{item.avatarUrl}}"></image>
 			<view class="index-list-item-info">
-				<text>小猫猫</text>
+				<text>{{item.nickName}}</text>
 				<view>
 					<text class="iconfont icon-ganxie"></text>
-					<text>100</text>
+					<text>{{item.favor}}</text>
 				</view>
 			</view>
-		</view>
-		<view class="index-list-item">
-			<image mode="aspectFill" src="../../images/swiper_images/coldplay1.jpg"></image>
-      <view class="index-list-item-info">
-				<text>小猫猫</text>
-				<view>
-					<text class="iconfont icon-ganxie"></text>
-					<text>100</text>
-				</view>
-			</view>
-		</view>
-		<view class="index-list-item">
-			<image mode="aspectFill" src="../../images/swiper_images/coldplay1.jpg"></image>
-      <view class="index-list-item-info">
-				<text>小猫猫</text>
-				<view>
-					<text class="iconfont icon-ganxie"></text>
-					<text>100</text>
-				</view>
-			</view>
-		</view>
+		</view>	
 	</view>
 </view>

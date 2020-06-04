@@ -1,4 +1,5 @@
 // miniprogram/pages/index/index.js
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -8,14 +9,24 @@ Page({
     imageUrl: [
       '../../images/swiper_images/blue.png',
       '../../images/swiper_images/blue2.png'
-    ]
+    ],
+    userList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    db.collection('users').field({
+      avatarUrl: true,
+      nickName: true,
+      favor: true
+    }).get().then(result=>{
+      console.log(result.data)
+      this.setData({
+        userList: result.data
+      })
+    })
   },
 
   /**
