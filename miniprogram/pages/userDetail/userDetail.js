@@ -30,59 +30,69 @@ Page({
       })
     })
   },
-  addSomeone(){
-    if(app.userInfo._id){
-      db.collection('message').where({
-          userId: this.data.userData._id
-      }).get().then(result=>{
-        if(result.data.length){ //更新
-          if(result.data[0].list.indexOf(app.userInfo._id) >= 0){
-            wx.showToast({
-              title: '已申请',
-            })
-          }else{
-            wx.cloud.callFunction({
-              name: 'update',
-              data: {
-                collection: 'message',
-                where: {
-                  userId: this.data.userData._id
-                },
-                data: `{list: cmd.unshift('${app.userInfo._id}')}`
-              }
-            }).then(result=>{
-              wx.showToast({
-                title: '申请成功',
-              })
-            })
-          }
-        }else{ // 添加
-          db.collection.add({
+  toLogin(){
+    wx.showModal({
+      title: '提示',
+      content: '请登录账号',
+      success (res) {
+        if (res.confirm) {
+          wx.switchTab({
+            url: '/pages/user/user'
+          })
+        } else if (res.cancel) {
+          return
+        }
+      }
+    })
+  },
+  applyForAddSomeone(){
+    const appId = app.userInfo._id
+    const userId = this.data.userData._id
+    db
+    .collection('message')
+    .where({userId})
+    .get()
+    .then(result=>{
+      if(result.data.length){ //更新
+        if(result.data[0].list.indexOf(appId) >= 0){
+          wx.showToast({
+            title: '已申请',
+          })
+        }else{
+          wx
+          .cloud
+          .callFunction({
+            name: 'update',
             data: {
-              userId: this.data.userData._id,
-              list: [app.userInfo._id]
+              collection: 'message',
+              where: {userId},
+              data: `{list: cmd.unshift('${appId}')}`
             }
-          }).then(result=>{
+          })
+          .then(result=>{
             wx.showToast({
               title: '申请成功',
             })
           })
         }
-      })
+      }else{ // 添加
+        db
+        .collection
+        .add({data: {userId,list: [appId]}})
+        .then(result=>{
+          wx.showToast({
+            title: '申请成功',
+          })
+        })
+      }
+    })
+  },
+  addSomeone(){
+    const appId = app.userInfo._id
+    if(appId){
+      this.applyForAddSomeone()
     }else{
-            wx.showModal({
-              title: '提示',
-              content: '请登录账号',
-              success (res) {
-                if (res.confirm) {
-                  wx.switchTab({
-                    url: '/pages/user/user'
-                  })
-                } else if (res.cancel) {
-                  return
-                }
-              }
-            })
+      this.toLogin()  
     }
   },
   onLoad: function (options) {
