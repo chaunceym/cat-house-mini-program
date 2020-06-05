@@ -25,7 +25,8 @@
 }
 
 .index-tab text.active {
-  border-bottom: 1px solid green;
+  border-bottom: 1px solid #3f72af;
+  color: #3f72af;
 }
 
 .index-list {

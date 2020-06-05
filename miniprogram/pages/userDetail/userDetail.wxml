@@ -17,8 +17,8 @@
 		</view>
 	</view>
 	<view class="add-friend">
-		<text wx:if="{{isFriend}}">已加好友</text>
-		<text wx:else>未加好友</text>
+		<text wx:if="{{isFriend}}">已是好友</text>
+		<text catchtap="addSomeone" wx:else>添加好友</text>
 	</view>
 
 
