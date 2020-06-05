@@ -19,10 +19,22 @@ Page({
       data: {
         collection: 'users',
         doc: id,
-        data: {favor: 6}
+        data: `{favor: cmd.inc(1)}`
       }
     }).then(result=>{
+      const cloneUserList = JSON.parse(JSON.stringify(this.data.userList))
       console.log(result)
+      if(result.result.stats.updated){
+        for(let i=0; i<cloneUserList.length; i++){
+          if(cloneUserList[i]._id === id){
+            cloneUserList[i].favor++
+          }
+        }
+        this.setData({
+          userList: cloneUserList
+        })
+      }
+      
     })
   },
   /**

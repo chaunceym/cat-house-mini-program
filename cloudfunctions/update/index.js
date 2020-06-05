@@ -6,8 +6,11 @@ cloud.init({
 })
 
 const db = cloud.database()
-const _ = db.command
+const cmd = db.command
 exports.main = async (event, context) => {
+  if(typeof event.data === 'string'){
+    event.data = eval('('+event.data+')')
+  }
   try {
     return await db.collection(event.collection).doc(event.doc)
     .update({

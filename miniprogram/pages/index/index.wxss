@@ -51,6 +51,3 @@
   margin: 10rpx auto 20rpx;
   color: #112D4E;
 }
-.index-list-item .index-list-item-info .favor-links{
-  color: inherit;
-}
