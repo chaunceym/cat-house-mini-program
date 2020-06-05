@@ -10,8 +10,8 @@
 		</block>
 	</swiper>
 	<view class="index-tab">
-		<text class="active">最新</text>
-		<text>推荐</text>
+		<text catchtap="toFavorSort" class="{{currentSort === 'favor' ? 'active' : ''}}">推荐</text>
+		<text catchtap="toTimeSort" class="{{currentSort === 'createAt' ? 'active' : ''}}">最新</text>
 	</view>
 	<view class="index-list">
 		<view class="index-list-item" wx:for="{{userList}}" wx:key="index">
