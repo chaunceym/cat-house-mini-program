@@ -1,4 +1,6 @@
 <!--miniprogram/pages/index/index.wxml-->
+<wxs src='../../utils/wordSplite.wxs' module="m1"/>
+<wxs src='../../utils/utilFormat.wxs' module="m2"/>
 <view class="index-container">
 	<swiper class="index-swiper" circular="true" indicator-dots="true" autoplay="true">
 		<block wx:for="{{imageUrl}}" wx:key="index">
@@ -15,10 +17,10 @@
 		<view class="index-list-item" wx:for="{{userList}}" wx:key="index">
 			<image mode="aspectFill" src="{{item.avatarUrl}}"></image>
 			<view class="index-list-item-info">
-				<text>{{item.nickName}}</text>
+				<text>{{ m1.wordSplit(item.nickName) }}</text>
 				<view class="favor-links" catchtap="favorLinks" data-id="{{item._id}}">
 					<text class="iconfont icon-ganxie"></text>
-					<text>{{item.favor}}</text>
+					<text>{{ m2.utilFormat(item.favor)}}</text>
 				</view>
 			</view>
 		</view>	

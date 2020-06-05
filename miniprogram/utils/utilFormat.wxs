@@ -1,0 +1,8 @@
+module.exports.utilFormat = function(number){
+  if(number >= 1000 && number < 9999){
+    number = (number/1000).toFixed(1) + 'K'
+  }else if(number >= 10000){
+    number = (number/10000).toFixed(1) + 'W'
+  }
+  return number
+}
