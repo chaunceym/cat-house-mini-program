@@ -8,16 +8,26 @@ cloud.init({
 const db = cloud.database()
 const cmd = db.command
 exports.main = async (event, context) => {
-  if(typeof event.data === 'string'){
-    event.data = eval('('+event.data+')')
-  }
   try {
-    return await db.collection(event.collection).doc(event.doc)
-    .update({
-      data: {
-        ...event.data
-      },
-    })
+    if(typeof event.data === 'string'){
+      event.data = eval('('+event.data+')')
+    }
+    if(event.doc){
+      return await db.collection(event.collection).doc(event.doc)
+      .update({
+        data: {
+          ...event.data
+        },
+      })
+    }else if(event.where){
+      return await db.collection(event.collection).where(event.where)
+      .update({
+        data: {
+          ...event.data
+        },
+      })
+    }
+    
   } catch(e) {
     console.error(e)
   }

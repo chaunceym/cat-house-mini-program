@@ -31,18 +31,43 @@ Page({
     })
   },
   addSomeone(){
-    console.log(app.userInfo._id)
-
     if(app.userInfo._id){
-      db.collection('message').add({
-        data: {
-          userId: this.data.userData._id,
-          list: [app.userInfo._id]
+      db.collection('message').where({
+          userId: this.data.userData._id
+      }).get().then(result=>{
+        if(result.data.length){ //更新
+          if(result.data[0].list.indexOf(app.userInfo._id) >= 0){
+            wx.showToast({
+              title: '已申请',
+            })
+          }else{
+            wx.cloud.callFunction({
+              name: 'update',
+              data: {
+                collection: 'message',
+                where: {
+                  userId: this.data.userData._id
+                },
+                data: `{list: cmd.unshift('${app.userInfo._id}')}`
+              }
+            }).then(result=>{
+              wx.showToast({
+                title: '申请成功',
+              })
+            })
+          }
+        }else{ // 添加
+          db.collection.add({
+            data: {
+              userId: this.data.userData._id,
+              list: [app.userInfo._id]
+            }
+          }).then(result=>{
+            wx.showToast({
+              title: '申请成功',
+            })
+          })
         }
-      }).then(result=>{
-        wx.showToast({
-          title: '申请成功'
-        })
       })
     }else{
             wx.showModal({
