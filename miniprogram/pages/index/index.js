@@ -14,11 +14,12 @@ Page({
   },
   favorLinks(event){
     const {id} = event.currentTarget.dataset
-    console.log(event)
-    console.log(id)
-    db.collection('users').doc(id).update({
-      data:{
-        favor: 4
+    wx.cloud.callFunction({
+      name: 'update',
+      data: {
+        collection: 'users',
+        doc: id,
+        data: {favor: 6}
       }
     }).then(result=>{
       console.log(result)
