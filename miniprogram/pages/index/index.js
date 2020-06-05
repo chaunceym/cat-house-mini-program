@@ -12,7 +12,18 @@ Page({
     ],
     userList: []
   },
-
+  favorLinks(event){
+    const {id} = event.currentTarget.dataset
+    console.log(event)
+    console.log(id)
+    db.collection('users').doc(id).update({
+      data:{
+        favor: 4
+      }
+    }).then(result=>{
+      console.log(result)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -22,7 +33,6 @@ Page({
       nickName: true,
       favor: true
     }).get().then(result=>{
-      console.log(result.data)
       this.setData({
         userList: result.data
       })
