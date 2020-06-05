@@ -74,6 +74,12 @@ Page({
       })
     })
   },
+  toUserDetail(event){
+    const id = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/userDetail/userDetail?id=${id}`
+    })
+  },
   onLoad: function (options) {
     this.getUserListData()
   },

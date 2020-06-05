@@ -2,7 +2,6 @@
 <view class="edit-template">
 	<view wx:if="{{toTextTemplate}}" class="edit-text-part">
 		<input type="text" placeholder="请输入要修改的内容" bindinput="getInputValue" value="{{inputValue}}"></input>
-
 	</view>
 	<view wx:if="{{toAvatarTemplate}}" class="edit-avatar-part">
 		<image catchtap="toggleAvatar" src="{{inputValue}}"></image>

@@ -1,1 +1,55 @@
 /* miniprogram/pages/userDetail/userDetail.wxss */
+.detail-container{
+  display: flex;
+  flex-direction: column;
+}
+.user-title{
+  text-align: center;
+}
+.user-avatar-info{
+  background-color: #112D4E;
+  color: #fff;
+  display: flex;
+  padding: 20rpx 0 30rpx;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.user-avatar-info image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+.user-avatar-info text{
+  font-size: 40rpx;
+  font-weight: 700;
+  padding-top: 40rpx;
+}
+.user-other-info{
+  margin: 20rpx;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+.user-other-info .info{
+  padding: 20rpx;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+.user-other-info .info .iconfont{
+  font-size: 40rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.add-friend{
+  padding: 40rpx 0;
+  text-align: center;
+}
+.add-friend text{
+  background-color: #112D4E;
+  color: #fff;
+  padding: 20rpx 50rpx;
+  border-radius: 10rpx;
+}

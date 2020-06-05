@@ -66,9 +66,6 @@ Page({
         title: '更新成功'
       })
       app.userInfo[editType] = inputValue
-      wx.navigateBack({
-        delta: 1
-      })
     })
   },
   submitInputValue(event){

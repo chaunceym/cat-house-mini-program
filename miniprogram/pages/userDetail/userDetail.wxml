@@ -1,2 +1,25 @@
 <!--miniprogram/pages/userDetail/userDetail.wxml-->
-<text>miniprogram/pages/userDetail/userDetail.wxml</text>
+<wxs src='../../utils/wordSplit.wxs' module="m1"/>
+<view class="detail-container">
+	<view class="user-avatar-info">
+		<image src="{{userData.avatarUrl}}"></image>
+		<text>{{userData.nickName}}</text>
+	</view>
+	<view class="user-other-info">
+		<text class="info">个性签名: {{ m1.wordSplit(userData.signature,10)}}</text>
+		<view class="info">
+			<text>手机号: {{userData.phone}}</text>
+			<text catchtap="callSomeone" wx:if="{{havePhone}}" class="iconfont icon-dianhua"></text>
+		</view>
+		<view class="info">
+			<text>微信号: {{userData.wxNumber}}</text>
+			<text catchtap="copyWxNumber" wx:if="{{haveWxNumber}}" class="iconfont icon-copy"></text>
+		</view>
+	</view>
+	<view class="add-friend">
+		<text wx:if="{{isFriend}}">已加好友</text>
+		<text wx:else>未加好友</text>
+	</view>
+
+
+</view>
