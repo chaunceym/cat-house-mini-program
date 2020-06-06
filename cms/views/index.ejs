@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>猫舍后台管理</h1>
+    <input type="file" id="uploadFile">
+  </body>
+  <script>
+    const uploadFile = document.getElementById('uploadFile')
+    uploadFile.onchange = (e)=>{
+      const file = e.target.files[0]
+      const param = new FormData()
+      param.append('file',file)
+      const config = {
+        headers : {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+      axios.post('/uploadBannerImg',param,config).then(res=>{
+        console.log(res.data)
+      })
+    }
+  </script>
+</html>
