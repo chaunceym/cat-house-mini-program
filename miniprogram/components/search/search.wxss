@@ -1,0 +1,16 @@
+/* components/search/search.wxss */
+.search-container{
+  padding: 10rpx 20rpx;
+}
+.search-range{
+  display: flex;
+  align-items: center;
+  background-color: #EFEFEF;
+  border-radius: 20rpx;
+}
+.search-range .iconfont{
+  margin: 10rpx;
+}
+.search-range input{
+  flex-grow: 1;
+}

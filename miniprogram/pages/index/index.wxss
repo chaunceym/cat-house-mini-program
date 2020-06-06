@@ -5,11 +5,15 @@
 }
 
 .index-swiper {
-  height: 400rpx;
+  height: 300rpx;
+  margin: 16rpx;
+}
+.index-swiper swiper-item{
+  border-radius: 10rpx
 }
 
 .index-swiper image {
-  height: 400rpx;
+  height: 300rpx;
   width: 100%;
 }
 

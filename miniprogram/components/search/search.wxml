@@ -1,0 +1,9 @@
+<!--components/search/search.wxml-->
+<view class="search-container">
+<view class="search-range">
+<text class="iconfont icon-sousuo"></text>
+  <input value="{{inputValue}}" bindinput="getInputValue" type="text" placeholder="请搜索"></input>
+  <text wx:if="{{isCancel}}" catchtap="clearInputValue" class="iconfont icon-deleteclosecancel"></text>
+</view>
+  
+</view>
