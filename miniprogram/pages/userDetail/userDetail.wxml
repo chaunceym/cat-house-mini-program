@@ -8,15 +8,15 @@
 	<view class="user-other-info">
 		<text class="info">个性签名: {{ m1.wordSplit(userData.signature,10)}}</text>
 		<view class="info">
-			<text>手机号: {{userData.phone}}</text>
-			<text catchtap="callSomeone" wx:if="{{havePhone}}" class="iconfont icon-dianhua"></text>
-		</view>
-		<view class="info">
 			<text>微信号: {{userData.wxNumber}}</text>
 			<text catchtap="copyWxNumber" wx:if="{{haveWxNumber}}" class="iconfont icon-copy"></text>
 		</view>
+		<view class="info">
+			<text>手机号: {{isFriend ? userData.phone : '仅好友可见'}}</text>
+			<text catchtap="callSomeone" wx:if="{{havePhone}}" class="iconfont icon-dianhua"></text>
+		</view>
 	</view>
-	<view class="add-friend">
+	<view wx:if="{{!isMe}}" class="add-friend">
 		<text wx:if="{{isFriend}}">已是好友</text>
 		<text catchtap="addSomeone" wx:else>添加好友</text>
 	</view>

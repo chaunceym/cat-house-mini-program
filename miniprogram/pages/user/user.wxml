@@ -19,7 +19,7 @@
 				<text class="iconfont icon-jinrujiantou"></text>
 			</view>
 		</navigator>
-		<navigator url="/pages/userDetail/userDetail" open-type="navigate">
+		<navigator url="/pages/userDetail/userDetail?id={{userInfo._id}}" open-type="navigate">
 			<view class="user-list-item">
 				<text>个人主页</text>
 				<text class="iconfont icon-jinrujiantou"></text>

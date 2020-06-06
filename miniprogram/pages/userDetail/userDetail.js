@@ -6,7 +6,8 @@ Page({
     isFriend: false,
     userData: {},
     havePhone: false,
-    haveWxNumber: false
+    haveWxNumber: false,
+    isMe: false
   },
   callSomeone(){
     wx.makePhoneCall({
@@ -88,21 +89,46 @@ Page({
     }
   },
   onLoad: function (options) {
-    const id = options.id
-    db.collection('users').doc(id).get().then(result=>{
+    const {id} = options
+    if(id === app.userInfo._id){
+      console.log('ddd')
       this.setData({
-        userData: result.data
+        isMe: true,
+        userData: app.userInfo,
+        isFriend: true
       })
-      if(result.data.phone !== ''){
+      if(app.userInfo.phone !== ''){
         this.setData({
           havePhone: true
         })
       }
-      if(result.data.wxNumber !== ''){
+      if(app.userInfo.wxNumber !== ''){
         this.setData({
           haveWxNumber: true
         })
       }
-    })
+    }else{
+      db.collection('users').doc(id).get().then(result=>{
+        this.setData({
+          userData: result.data
+        })
+        const {friendsList} = result.data
+        if(friendsList.indexOf(app.userInfo._id) >= 0){
+          this.setData({
+            isFriend: true
+          })
+        }
+        if(result.data.phone !== ''){
+          this.setData({
+            havePhone: true
+          })
+        }
+        if(result.data.wxNumber !== ''){
+          this.setData({
+            haveWxNumber: true
+          })
+        }
+      })
+    }
   },
 })
