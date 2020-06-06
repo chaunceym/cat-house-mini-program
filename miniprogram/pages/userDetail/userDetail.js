@@ -91,7 +91,6 @@ Page({
   onLoad: function (options) {
     const {id} = options
     if(id === app.userInfo._id){
-      console.log('ddd')
       this.setData({
         isMe: true,
         userData: app.userInfo,

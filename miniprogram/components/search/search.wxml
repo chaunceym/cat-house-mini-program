@@ -13,13 +13,13 @@
     <text catchtap="removeStorage" class="iconfont icon-shanchu"></text>
   </view>
   <view class="search-history-content">
-    <text wx:for="{{searchHistory}}" wx:key="index">{{item}}</text>
+    <text catchtap="searchUserByHistory" data-text="{{item}}" wx:for="{{searchHistory}}" wx:key="index">{{item}}</text>
   </view>
   <view class="editUserInfo-list">
-    <navigator url="/pages/userDetail/userDetail?id={{item._id}}" open-type="navigate">
+    <navigator wx:for="{{usersList}}" wx:key="index" url="/pages/userDetail/userDetail?id={{item._id}}" open-type="navigate">
       <view class="editUserInfo-list-item">
         <image src="{{item.avatarUrl}}"></image>
-        <text>item.nickName</text>
+        <text>{{item.nickName}}</text>
       </view>
     </navigator>
   </view>

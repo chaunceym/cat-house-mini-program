@@ -1,4 +1,6 @@
 // components/search/search.js
+const app = getApp()
+const db = wx.cloud.database()
 Component({
   /**
    * 组件的属性列表
@@ -17,7 +19,8 @@ Component({
     isCancel: false,
     inputValue: '',
     isFocus: false,
-    searchHistory: []
+    searchHistory: [],
+    usersList: []
   },
 
   /**
@@ -63,12 +66,14 @@ Component({
       this.triggerEvent('myevent', detail)
     },
     confirmSearch(event){
+      const {value} = event.detail
       let cloneSearchHistory = [...this.data.searchHistory]
-      cloneSearchHistory.unshift(event.detail.value)
+      cloneSearchHistory.unshift(value)
       wx.setStorage({
         data: [...new Set(cloneSearchHistory)],
         key: 'searchHistory',
       })
+      this.searchUserByKeywords(value)
     },
     removeStorage(){
       wx.removeStorage({
@@ -85,6 +90,29 @@ Component({
         inputValue: '',
         isCancel: false
       })
+    },
+    searchUserByKeywords(keyword){
+      db.collection('users').where({
+        nickName: db.RegExp({
+          regexp: keyword,
+          options: 'i'
+        })
+      }).field({
+        nickName: true,
+        avatarUrl: true
+      }).get().then(result=>{
+        this.setData({
+          usersList: result.data
+        })
+      })
+    },
+    searchUserByHistory(event){
+      const {text} = event.target.dataset
+      this.setData({
+        inputValue: text,
+        isCancel: true
+      })
+      this.searchUserByKeywords(text)
     }
   }
 })
