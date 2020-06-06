@@ -7,7 +7,7 @@
     <navigator url="/pages/userDetail/userDetail?id={{userInfo._id}}" open-type="navigate">
     <image src="{{userInfo.avatarUrl}}"></image>
     </navigator>
-    <text class="iconfont icon-agree"></text>
-    <text class="iconfont icon-shanchu"></text>
+    <text catchtap="agreeMessage" class="iconfont icon-agree"></text>
+    <text catchtap="removeMessage" class="iconfont icon-shanchu"></text>
 	</movable-area>
 </view>

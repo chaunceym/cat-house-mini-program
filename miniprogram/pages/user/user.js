@@ -19,7 +19,8 @@ Page({
           favor: 0,
           wxNumber: '',
           createAt: new Date(),
-          isLocation: true
+          isLocation: true,
+          friendsList: []
         }
       }).then(result=>{
         db.collection('users').doc(result._id).get().then(result=>{
@@ -33,7 +34,6 @@ Page({
     }
   },
   getMessage(){
-    console.log(app.userInfo)
     db.collection('message').where({
       userId: app.userInfo._id
     }).watch({
@@ -44,6 +44,10 @@ Page({
             index: 2
           })
           app.userMessage = [...list]
+        }else{
+          wx.hideTabBarRedDot({
+            index: 2,
+          })
         }
       },
       onError: function(err) {

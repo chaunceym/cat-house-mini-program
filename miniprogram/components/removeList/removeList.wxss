@@ -5,20 +5,20 @@
 .page-section movable-area{
   width: calc(100% - 40rpx);
   height: 100rpx;
-  margin: 20rpx;
+  margin: 40rpx 20rpx;
   position: relative;
   border-bottom: 1px solid #ddd;
   padding: 10rpx;
 }
 .page-section movable-view{
-  height: calc(100% + 4rpx);
+  height: 100%;
   width: calc(100% - 240rpx);
   position: absolute;
   padding-left: 20rpx;
   background-color: #fff;
   left: 220rpx;
   line-height: 100rpx;
-  top: -4rpx;
+  top: -2rpx;
   z-index: 1;
 }
 .page-section image{

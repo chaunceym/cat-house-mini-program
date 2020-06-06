@@ -5,6 +5,6 @@
 		<text>暂时没有消息</text>
 	</view>
 	<view wx:else>
-		<remove-list wx:for="{{userMessage}}" wx:key="index" messageId="{{item}}"/>
+		<remove-list bindmyevent="onMyEvent"   wx:for="{{userMessage}}" wx:key="index" messageId="{{item}}"/>
 	</view>
 </view>
