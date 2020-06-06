@@ -29,18 +29,19 @@
 			<text class="iconfont icon-jinrujiantou"></text>
 		</view>
 	</navigator>
+	<navigator url="/pages/template/editTemplate/editTemplate?type=weixin" open-type="navigate">
+		<view class="editUserInfo-list-item">
+			<text>设置微信号  <text style="color:#999;font-size:12px;"></text></text>
+			<text class="iconfont icon-jinrujiantou"></text>
+		</view>
+	</navigator>
   <navigator url="/pages/template/editTemplate/editTemplate?type=phone" open-type="navigate">
 		<view class="editUserInfo-list-item">
 			<text>设置手机号  <text style="color:#999;font-size:12px;">仅好友可见</text></text>
 			<text class="iconfont icon-jinrujiantou"></text>
 		</view>
 	</navigator>
-  <navigator url="/pages/template/editTemplate/editTemplate?type=weixin" open-type="navigate">
-		<view class="editUserInfo-list-item">
-			<text>设置微信号  <text style="color:#999;font-size:12px;">仅好友可见</text></text>
-			<text class="iconfont icon-jinrujiantou"></text>
-		</view>
-	</navigator>
+  
 </view>
 
 </view>

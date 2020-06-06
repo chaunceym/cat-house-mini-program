@@ -5,14 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    longitude: '',
+    latitude: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  getLoaction(){
+    wx.getLocation({
+      type: 'gcj02 ',
+      success: (res)=> {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        this.setData({
+          longitude,latitude
+        })
+      }
+     })
+  },
   onLoad: function (options) {
-
+    this.getLoaction()
   },
 
   /**
@@ -26,7 +39,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getLoaction()
   },
 
   /**
