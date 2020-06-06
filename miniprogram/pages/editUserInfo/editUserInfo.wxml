@@ -17,6 +17,12 @@
 			<text class="iconfont icon-jinrujiantou"></text>
 		</view>
 	</navigator>
+	<navigator url="/pages/template/editTemplate/editTemplate?type=pets" open-type="navigate">
+		<view class="editUserInfo-list-item">
+			<text>修改宠物信息</text>
+			<text class="iconfont icon-jinrujiantou"></text>
+		</view>
+	</navigator>
   <navigator url="/pages/template/editTemplate/editTemplate?type=signature" open-type="navigate">
 		<view class="editUserInfo-list-item">
 			<text>修改个性签名</text>

@@ -32,7 +32,8 @@ Page({
           latitude: this.latitude,
           longitude: this.longitude,
           location: db.Geo.Point(this.longitude,this.latitude),
-          friendsList: []
+          friendsList: [],
+          pets: ''
         }
       }).then(result=>{
         db.collection('users').doc(result._id).get().then(result=>{

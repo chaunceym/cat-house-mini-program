@@ -7,7 +7,8 @@ const editTypes = {
   phone: 'phone',
   weixin: 'wxNumber',
   signature: 'signature',
-  location: 'isLocation'
+  location: 'isLocation',
+  pets: 'pets'
 }
 Page({
 

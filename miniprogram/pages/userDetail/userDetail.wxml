@@ -7,6 +7,7 @@
 	</view>
 	<view class="user-other-info">
 		<text class="info">个性签名: {{ m1.wordSplit(userData.signature,10)}}</text>
+		<text class="info">宠物信息: {{ m1.wordSplit(userData.pets,10)}}</text>
 		<view class="info">
 			<text>微信号: {{userData.wxNumber}}</text>
 			<text catchtap="copyWxNumber" wx:if="{{haveWxNumber}}" class="iconfont icon-copy"></text>
