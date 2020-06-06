@@ -1,9 +1,26 @@
 <!--components/search/search.wxml-->
 <view class="search-container">
-<view class="search-range">
-<text class="iconfont icon-sousuo"></text>
-  <input value="{{inputValue}}" bindinput="getInputValue" type="text" placeholder="请搜索"></input>
-  <text wx:if="{{isCancel}}" catchtap="clearInputValue" class="iconfont icon-deleteclosecancel"></text>
-</view>
-  
+	<view class="search-range">
+		<view class="search-input">
+			<text class="iconfont icon-sousuo"></text>
+			<input bindfocus="toFocus" value="{{inputValue}}" bindinput="getInputValue" bindconfirm="confirmSearch" type="text" confirm-type="search" placeholder="请搜索"></input>
+			<text wx:if="{{isCancel}}" catchtap="clearInputValue" class="iconfont icon-deleteclosecancel"></text>
+		</view>
+		<text wx:if="{{isFocus}}" class="search-text" catchtap="exitSearch">取消</text>
+	</view>
+  <view class="search-history-title">
+    <text>历史记录</text>
+    <text catchtap="removeStorage" class="iconfont icon-shanchu"></text>
+  </view>
+  <view class="search-history-content">
+    <text wx:for="{{searchHistory}}" wx:key="index">{{item}}</text>
+  </view>
+  <view class="editUserInfo-list">
+    <navigator url="/pages/userDetail/userDetail?id={{item._id}}" open-type="navigate">
+      <view class="editUserInfo-list-item">
+        <image src="{{item.avatarUrl}}"></image>
+        <text>item.nickName</text>
+      </view>
+    </navigator>
+  </view>
 </view>

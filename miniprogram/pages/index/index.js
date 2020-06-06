@@ -11,7 +11,8 @@ Page({
       '../../images/swiper_images/blue2.png'
     ],
     userList: [],
-    currentSort: 'favor'
+    currentSort: 'favor',
+    isFocus: false
   },
   toTimeSort(){
     if(this.data.currentSort === 'favor'){
@@ -78,6 +79,11 @@ Page({
     const id = event.currentTarget.dataset.id
     wx.navigateTo({
       url: `/pages/userDetail/userDetail?id=${id}`
+    })
+  },
+  onMyEvent(e){
+    this.setData({
+      isFocus: e.detail.isFocus
     })
   },
   onLoad: function (options) {

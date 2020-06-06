@@ -1,16 +1,61 @@
 /* components/search/search.wxss */
 .search-container{
   padding: 10rpx 20rpx;
+  overflow: hidden;
 }
 .search-range{
   display: flex;
   align-items: center;
+}
+.search-range .search-text{
+  padding-left: 20rpx;
+}
+.search-input{
+  display: flex;
+  align-items: center;
   background-color: #EFEFEF;
   border-radius: 20rpx;
+  flex-grow: 1;
 }
 .search-range .iconfont{
   margin: 10rpx;
 }
-.search-range input{
+.search-range .search-input input{
   flex-grow: 1;
+}
+.search-range .search-text{
+  color: #112D4E;
+  background-color: #fff;
+}
+.search-history-title{
+  padding: 20rpx 16rpx 20rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #EEEEEE;
+}
+.search-history-content{
+  display: flex;
+  flex-wrap: wrap;
+}
+.search-history-content text{
+  padding: 10rpx 20rpx;
+  margin: 10rpx 0 0 10rpx;
+  border: 1px solid #EEEEEE;
+}
+.editUserInfo-list{
+  box-shadow: 0px 0px 0px .5px #ddd;
+  border-radius: 10px;
+  padding: 10rpx;
+}
+.editUserInfo-list-item{
+  display: flex;
+  padding: 15rpx 10rpx;
+  align-items: center;
+}
+.editUserInfo-list-item image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 40rpx;
 }

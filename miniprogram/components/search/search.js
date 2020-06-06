@@ -15,7 +15,9 @@ Component({
    */
   data: {
     isCancel: false,
-    inputValue: ''
+    inputValue: '',
+    isFocus: false,
+    searchHistory: []
   },
 
   /**
@@ -30,6 +32,53 @@ Component({
           inputValue
         })
       }
+    },
+    exitSearch(){
+      this.setData({
+        isFocus: false
+      })
+      const detail= {
+        isFocus: false
+      }
+      this.triggerEvent('myevent', detail)
+    },
+    toFocus(event){
+      wx.getStorage({
+        key: 'searchHistory',
+        success: (result)=>{
+          const {data} = result
+          if(data){
+            this.setData({
+              searchHistory: data
+            })
+          }
+        }
+      })
+      this.setData({
+        isFocus: true
+      })
+      const detail= {
+        isFocus: true
+      }
+      this.triggerEvent('myevent', detail)
+    },
+    confirmSearch(event){
+      let cloneSearchHistory = [...this.data.searchHistory]
+      cloneSearchHistory.unshift(event.detail.value)
+      wx.setStorage({
+        data: [...new Set(cloneSearchHistory)],
+        key: 'searchHistory',
+      })
+    },
+    removeStorage(){
+      wx.removeStorage({
+        key: 'searchHistory',
+        success: () => {
+          this.setData({
+            searchHistory: []
+          })
+        }
+      })
     },
     clearInputValue(){
       this.setData({
