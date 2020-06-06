@@ -1,18 +1,30 @@
 // miniprogram/pages/friendsList/friendsList.js
+const app = getApp()
+const db = wx.cloud.database()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
-  },
+    usersData: []
+  },  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    db.collection('users').where({
+      friendsList: app.userInfo._id
+    }).field({
+      avatarUrl: true,
+      nickName: true
+    }).get().then(result=>{
+      console.log(result)
+      this.setData({
+        usersData: result.data
+      })
+    })
   },
 
   /**

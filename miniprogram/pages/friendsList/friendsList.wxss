@@ -1,1 +1,32 @@
-/* miniprogram/pages/friendsList/friendsList.wxss */
+/* miniprogram/pages/editUserInfo/editUserInfo.wxss */
+.friendsList-container{
+  display: flex;
+  flex-direction: column;
+}
+.friendsList-title{
+  text-align: center;
+  background-color: #112D4E;
+  color: #fff;
+  padding: 30rpx 0 90rpx;
+}
+.editUserInfo-list{
+  width: 90%;
+  background-color: #fff;
+  box-shadow: 0px 0px 0px .5px #ddd;
+  margin: auto;
+  border-radius: 10px;
+  z-index: 1;
+  margin-top: -30rpx;
+  padding: 10rpx;
+}
+.editUserInfo-list-item{
+  display: flex;
+  padding: 15rpx 10rpx;
+  align-items: center;
+}
+.editUserInfo-list-item image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 40rpx;
+}
