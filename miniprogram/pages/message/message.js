@@ -1,18 +1,21 @@
 // miniprogram/pages/message/message.js
+const app = getApp()
+const db = wx.cloud.database()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userMessage: [],
+    hasMessage: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -26,7 +29,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(app.userInfo._id){
+      if(app.userMessage.length){
+        this.setData({
+          hasMessage: true,
+          userMessage: app.userMessage
+        })
+      }
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '请登录账号',
+        success (res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/user/user'
+            })
+          } else if (res.cancel) {
+            return
+          }
+        }
+      })
+    }
   },
 
   /**

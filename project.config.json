@@ -86,6 +86,13 @@
 					"pathName": "pages/userDetail/userDetail",
 					"query": "id=baada3ac5ed9e2fe005584277b2f6cde",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/message/message",
+					"pathName": "pages/message/message",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

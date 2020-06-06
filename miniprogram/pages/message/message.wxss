@@ -1,1 +1,17 @@
 /* miniprogram/pages/message/message.wxss */
+.message-container{
+  display: flex;
+  flex-direction: column;
+}
+.no-message{
+  padding: 300rpx 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.no-message .iconfont{
+  font-size:200rpx;
+}
+.no-message text{
+  color: #ddd;
+}

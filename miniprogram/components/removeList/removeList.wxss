@@ -1,0 +1,50 @@
+/* components/removeList/removeList.wxss */
+.page-section{
+  height: 100rpx;
+}
+.page-section movable-area{
+  width: calc(100% - 40rpx);
+  height: 100rpx;
+  margin: 20rpx;
+  position: relative;
+  border-bottom: 1px solid #ddd;
+  padding: 10rpx;
+}
+.page-section movable-view{
+  height: calc(100% + 4rpx);
+  width: calc(100% - 240rpx);
+  position: absolute;
+  padding-left: 20rpx;
+  background-color: #fff;
+  left: 220rpx;
+  line-height: 100rpx;
+  top: -4rpx;
+  z-index: 1;
+}
+.page-section image{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  border-radius: 50%;
+  top: 0;
+  left: 36rpx;
+}
+.page-section .iconfont{
+  position: absolute;
+  top: 0;
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+}
+.page-section .icon-shanchu{
+  right: 22rpx;
+  font-weight: 700;
+  background-color: red;
+}
+.page-section .icon-agree{
+  right: 122rpx;
+  background-color: #112D4E;
+}
