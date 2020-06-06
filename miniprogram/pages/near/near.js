@@ -17,7 +17,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   getLoaction(){
-    if(app.userInfo._id){
       wx.getLocation({
         type: 'gcj02 ',
         success: (res)=> {
@@ -31,31 +30,13 @@ Page({
           .then(result=>{})
           this.getGeo()
         }
-       })
-    }else{
-      this.toLogin()
-    }
+       })   
   },
   markerTap(event){
    const id = event.markerId
    wx.navigateTo({
      url: `/pages/userDetail/userDetail?id=${id}`,
    })
-  },
-  toLogin(){
-    wx.showModal({
-      title: '提示',
-      content: '请登录账号',
-      success (res) {
-        if (res.confirm) {
-          wx.switchTab({
-            url: '/pages/user/user'
-          })
-        } else if (res.cancel) {
-          return
-        }
-      }
-    })
   },
   getGeo(){
 db.collection('users').where({

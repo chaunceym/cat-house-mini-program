@@ -6,10 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imageUrl: [
-      '../../images/swiper_images/blue.png',
-      '../../images/swiper_images/blue2.png'
-    ],
+    bannerList: [],
     userList: [],
     currentSort: 'favor',
     isFocus: false
@@ -86,8 +83,17 @@ Page({
       isFocus: e.detail.isFocus
     })
   },
+  getBannerList(){
+    db.collection('banner').get().then(result=>{
+      console.log(result)
+      this.setData({
+        bannerList: result.data
+      })
+    })
+  },
   onLoad: function (options) {
     this.getUserListData()
+    this.getBannerList()
   },
 
   /**
