@@ -4,7 +4,7 @@ const db = wx.cloud.database()
 Page({
   data: {
     userMessage: [],
-    hasMessage: false
+    hasMessage: false,
   },
   onMyEvent(e){
     this.setData({

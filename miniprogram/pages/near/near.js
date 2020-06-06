@@ -1,4 +1,7 @@
 // miniprogram/pages/near/near.js
+const app = getApp()
+const db = wx.cloud.database()
+const cmd = db.command
 Page({
 
   /**
@@ -6,23 +9,76 @@ Page({
    */
   data: {
     longitude: '',
-    latitude: ''
+    latitude: '',
+    markers: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   getLoaction(){
-    wx.getLocation({
-      type: 'gcj02 ',
-      success: (res)=> {
-        const latitude = res.latitude
-        const longitude = res.longitude
-        this.setData({
-          longitude,latitude
-        })
-      }
-     })
+    if(app.userInfo._id){
+      wx.getLocation({
+        type: 'gcj02 ',
+        success: (res)=> {
+          const latitude = res.latitude
+          const longitude = res.longitude
+          this.setData({longitude,latitude})
+          db
+          .collection('users')
+          .doc(app.userInfo._id)
+          .update({data:{latitude,longitude,location:[longitude,latitude]}})
+          .then(result=>{})
+          this.getGeo()
+        }
+       })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '请登录账号',
+        success (res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/user/user'
+            })
+          } else if (res.cancel) {
+            return
+          }
+        }
+      })
+    }
+  },
+  getGeo(){
+db.collection('users').where({
+  location: cmd.geoNear({
+    geometry: db.Geo.Point(this.data.longitude,this.data.latitude),
+    minDistance: 0,
+    maxDistance: 5000,
+  }),
+  isLocation: true
+}).field({
+  longitude: true,
+  latitude: true,
+  avatarUrl: true
+}).get().then(result=>{
+  const {data} = result
+  let geoInfo = []
+  if(data.length){
+    for(let i=0;i<data.length;i++){
+      geoInfo.push({
+        iconPath: data[i].avatarUrl,
+        id: data[i]._id,
+        latitude: data[i].latitude,
+        longitude: data[i].longitude,
+        width: 40,
+        height: 40
+      })
+    }
+    this.setData({
+      markers: geoInfo
+    })
+  }
+})
   },
   onLoad: function (options) {
     this.getLoaction()

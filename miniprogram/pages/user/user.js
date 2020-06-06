@@ -7,6 +7,15 @@ Page({
     isLogin: false,
     disabled: true
   },
+  getLocation(){
+    wx.getLocation({
+      type: 'gcj02 ',
+      success: (res)=> {
+        this.latitude = res.latitude
+        this.longitude = res.longitude
+      }
+     })
+  },
   bindGetUserInfo(event){
     const userInfo = event.detail.userInfo
     if(!this.data.isLogin && userInfo){
@@ -20,6 +29,9 @@ Page({
           wxNumber: '',
           createAt: new Date(),
           isLocation: true,
+          latitude: this.latitude,
+          longitude: this.longitude,
+          location: db.Geo.Point(this.longitude,this.latitude),
           friendsList: []
         }
       }).then(result=>{
@@ -37,17 +49,19 @@ Page({
     db.collection('message').where({
       userId: app.userInfo._id
     }).watch({
-      onChange: function(snapshot) { 
-        const {list} = snapshot.docChanges[0].doc
-        if(list.length){
-          wx.showTabBarRedDot({
-            index: 2
-          })
-          app.userMessage = [...list]
-        }else{
-          wx.hideTabBarRedDot({
-            index: 2,
-          })
+      onChange: function(snapshot) {
+        if(snapshot.docChanges.length !== 0){
+          const list = snapshot.docChanges[0].doc.list
+          if(list.length){
+            wx.showTabBarRedDot({
+              index: 2
+            })
+            app.userMessage = [...list]
+          }else{
+            wx.hideTabBarRedDot({
+              index: 2,
+            })
+          }
         }
       },
       onError: function(err) {
@@ -56,6 +70,7 @@ Page({
     })
   },
   onLoad: function (options) {
+    this.getLocation()
     wx.cloud.callFunction({
       name: 'login',
     }).then(result=>{
